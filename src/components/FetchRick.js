@@ -5,9 +5,9 @@ const FetchRick = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch("https://rickandmortyapi.com/api/character")
+        fetch("https://rickandmortyapi.com/api/character/1,2,3,4,5,6")
             .then(value => value.json())
-            .then(items => setUsers(items['results'])
+            .then(items => setUsers(items)
             )
     }, []);
 
