@@ -1,4 +1,5 @@
 const baseURL = 'https://jsonplaceholder.typicode.com';
+const baseURLLaunches = 'https://api.spacexdata.com/v3/launches';
 
 const posts = '/posts';
 
@@ -11,5 +12,6 @@ const urls = {
 
 export {
     baseURL,
-    urls
+    urls,
+    baseURLLaunches
 }
