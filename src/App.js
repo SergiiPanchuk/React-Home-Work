@@ -1,20 +1,23 @@
 import {useForm} from "react-hook-form";
-import {savePost} from "./services/postServices";
+
+import {saveComment} from "./services/commentServices";
+
 
 const App = () => {
 
-    const {register,handleSubmit}=useForm()
+    const {register, handleSubmit} = useForm()
 
     const create = (data) => {
-        savePost(data).then(({data}) => console.log(data))
+        saveComment(data).then(({data}) => console.log(data))
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit(create)}>
-                <input {...register("title")}/>
-                <input {...register("body")}/>
-                <input {...register("userId")}/>
+                <input  {...register("postId")} placeholder="postId"/>
+                <input {...register("name")} placeholder="name"/>
+                <input {...register("email")} placeholder="email"/>
+                <input {...register("body")} placeholder="body"/>
                 <button>create</button>
             </form>
         </div>

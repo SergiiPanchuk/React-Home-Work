@@ -1,4 +1,4 @@
-const baseURL = 'https://jsonplaceholder.typicode.com/posts';
+const baseURL = 'http://jsonplaceholder.typicode.com/comments';
 
 export {
     baseURL
