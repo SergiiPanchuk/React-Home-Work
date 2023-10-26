@@ -1,6 +1,8 @@
-import {PostOfComment} from "./PostOfComment";
 import {useEffect, useState} from "react";
+
+import {PostOfComment} from "./PostOfComment";
 import {commentService} from "../../services/commentService";
+import css from "./Comments.module.css"
 
 const Comment = ({comment}) => {
     const {body, email, id, name, postId} = comment;
@@ -18,7 +20,7 @@ const Comment = ({comment}) => {
     }, [trigger])
 
     return (
-        <div>
+        <div className={css.Comment}>
             <div>body:{body}</div>
             <div>email:{email}</div>
             <div>id:{id}</div>
