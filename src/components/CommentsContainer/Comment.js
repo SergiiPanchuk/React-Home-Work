@@ -1,6 +1,9 @@
+
+
 const Comment = ({comment}) => {
 
     const {body, email, id, name, postId} = comment
+
     return (
         <div>
             <div>body: {body}</div>

@@ -12,13 +12,13 @@ const PostDetailsPage = () => {
     const [comments, setComments] = useState(null);
 
     useEffect( ()=>{
-          commentsServices.getCommentsByPostId(data.id).then(({data})=>setComments(data))
+          commentsServices.getCommentsByPostId(id).then(({data})=>setComments(data))
     },[id])
 
     return (
         <div>
             <PostDetails post={data}/>
-            <Comments comments={comments}/>
+            {comments && <Comments comments={comments}/>}
         </div>
     );
 };

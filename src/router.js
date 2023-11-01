@@ -15,21 +15,19 @@ const router = createBrowserRouter([
                 index:true,element:<Navigate to={'users'}/>
             },
             {
-                path:'users', element:<UsersPage/>,children:[
+                path:'users', element:<UsersPage/>
+            },
+            {
+                path:'users/:id',element:<UserDetailsPage/>, loader:({params:{id}})=>userService.getById(id),
+                children:[
                     {
-                        path:':id',element:<UserDetailsPage/>, loader:({params:{id}})=>userService.getById(id),
-                        children:[
-                            {path:':id', element:<PostsPage/>,loader:({params:{id}})=>postService.getByUserId(id),
-                                children:[
-                                    {
-                                        path:':postId', element:<PostDetailsPage/>,loader:({params:{postId}})=>postService.getById(postId)
-                                    }
-                                ]
-                            }
-                        ]
+                        path:':id', element:<PostsPage/>,loader:({params:{id}})=>postService.getByUserId(id)
                     }
                 ]
             },
+            {
+                path:'users/:id/:id/:postId', element:<PostDetailsPage/>,loader:({params:{postId}})=>postService.getById(postId)
+            }
         ]
     }
 ])

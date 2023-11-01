@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {userService} from "../services/userService";
 import {Users} from "../components/UsersContainer/Users";
-import {Outlet} from "react-router-dom";
 
 const UsersPage = () => {
 
@@ -14,7 +13,6 @@ const UsersPage = () => {
     return (
         <div>
             <Users users={users}/>
-            <Outlet/>
         </div>
     );
 };
