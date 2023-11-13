@@ -1,0 +1,28 @@
+
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+
+import {CarForm, Cars} from "../components";
+import {carService} from "../services";
+import {carsActions} from "../redux";
+
+const CarPage = () => {
+    const dispatch = useDispatch();
+    const {cars} = useSelector(state => state.cars);
+    const {trigger} = useSelector(state => state.trigger)
+
+
+
+    useEffect(() => {
+        carService.getAll().then(({data}) => dispatch(carsActions.setResponse({cars: data})))
+    }, [trigger, dispatch])
+
+    return (
+        <div>
+            <CarForm/>
+            <Cars cars={cars}/>
+        </div>
+    );
+}
+
+export {CarPage};
