@@ -5,17 +5,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {carValidator} from "../validators";
 import {carService} from "../services";
 import {triggerAction} from "../redux";
+import {useEffect} from "react";
 
 
 const CarForm = () => {
 
     const dispatch = useDispatch();
     const {trigger} = useSelector(state => state.trigger)
+    const {car} = useSelector(state => state.car)
 
-    const {register, handleSubmit, reset, formState: {isValid, errors}} = useForm({
+
+    const {register, handleSubmit, reset, formState: {isValid, errors},setValue} = useForm({
         mode: 'all',
-        resolver: joiResolver(carValidator)
+        resolver: joiResolver(carValidator),
     })
+
+    useEffect(() => {
+        if (car) {
+            setValue('brand', car.brand, {shouldValidate: true})
+            setValue('price', car.price, {shouldValidate: true})
+            setValue('year', car.year, {shouldValidate: true})
+        }
+    }, [car, setValue])
 
     const save = async (car) => {
         await carService.create(car);
