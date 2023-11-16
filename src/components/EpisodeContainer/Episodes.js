@@ -1,11 +1,11 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {useSearchParams} from "react-router-dom";
 
 
 import {episodeAction} from "../../redux";
 import {Episode} from "./Episode";
 import css from "./Episodes.module.css"
-import {useSearchParams} from "react-router-dom";
 
 const Episodes = () => {
     const {episodes, isLoading, prev, next} = useSelector(state => state.episodes);
@@ -33,7 +33,6 @@ const Episodes = () => {
         })
     }
 
-    console.log(episodes);
     return (
         <div>
             {isLoading && <h2>IsLoading</h2>}

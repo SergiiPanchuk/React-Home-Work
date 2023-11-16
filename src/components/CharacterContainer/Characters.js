@@ -1,11 +1,13 @@
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import {Character} from "./Character";
+import css from './Character.module.css'
 
 
-const Characters = ({characters}) => {
-
+const Characters = () => {
     const navigate = useNavigate();
+    const {characters} = useSelector(state => state.episodes);
 
     const back = () => {
         navigate('/episode')
@@ -13,9 +15,9 @@ const Characters = ({characters}) => {
 
     return (
         <div>
-            {/*<div className={css.characterHeader}>Rick & Morty</div>*/}
+            <div className={css.characterHeader}>Rick & Morty</div>
             <button onClick={back}>Back</button>
-            {characters.map((character)=><Character key={character.id} character={character}/>)}
+            {characters.map((character) => <Character key={character.id} character={character}/>)}
         </div>
     );
 };

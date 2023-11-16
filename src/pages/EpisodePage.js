@@ -1,5 +1,6 @@
-import {Episodes} from "../components";
 import {useSelector} from "react-redux";
+
+import {Episodes} from "../components";
 
 const EpisodesPage = () => {
     const {errors} = useSelector(state => state.episodes);

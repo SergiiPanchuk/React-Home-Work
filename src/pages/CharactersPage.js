@@ -1,25 +1,25 @@
 import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+
 import {Characters} from "../components";
-import {useDispatch} from "react-redux";
 import {episodeAction} from "../redux";
 
 const CharactersPage = () => {
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(episodeAction.getAll())
-    }, [dispatch,])
+    const {idOfCharacters, isLoading, errors} = useSelector(state => state.episodes);
 
 
     useEffect(() => {
-
-    }, [])
+        dispatch(episodeAction.getByCharacterId(idOfCharacters))
+    }, [dispatch, idOfCharacters])
 
 
     return (
         <div>
-            {characters && <Characters characters={characters}/>}
+            {errors && <h2>{JSON.stringify(errors)}</h2>}
+            {isLoading && <h2>IsLoading</h2>}
+            {<Characters/>}
         </div>
     );
 };
