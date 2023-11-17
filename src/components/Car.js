@@ -1,8 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {triggerAction} from "../redux";
+import {carsActions} from "../redux";
 import {carService} from "../services";
-import {forUpdateAction} from "../redux/slices/forUpdateSlice";
 
 const Car = ({car}) => {
     const {brand, price, year} = car;
@@ -12,11 +11,11 @@ const Car = ({car}) => {
 
     const deleteById = async () => {
         await carService.deteleById(car.id);
-        dispatch(triggerAction.setTrigger({trigger: !trigger}))
+        dispatch(carsActions.setTrigger({trigger: !trigger}))
     }
 
-    const update = () =>{
-       dispatch(forUpdateAction.setUpdate({car:car}))
+    const update = () => {
+        dispatch(carsActions.setUpdate({car: car}))
     }
 
     return (

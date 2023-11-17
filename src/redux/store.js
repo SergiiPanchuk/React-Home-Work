@@ -1,14 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 
-import {carsReducer, triggerReducer} from "./slices";
-import {forUpdateReducer} from "./slices/forUpdateSlice";
+import {carsReducer} from "./slices";
 
 
 const store = configureStore({
     reducer: {
-        cars: carsReducer,
-        trigger: triggerReducer,
-        car: forUpdateReducer
+        cars: carsReducer
     }
 });
 
