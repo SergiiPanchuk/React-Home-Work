@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import {episodeAction} from "../../redux";
+import {characterAction} from "../../redux";
 import css from "./Episode.module.css"
 
 const Episode = ({value}) => {
@@ -14,8 +14,8 @@ const Episode = ({value}) => {
         return parts[parts.length - 1];
     });
 
-    const setIds = () =>{
-        dispatch(episodeAction.setCharactersId(characterIds))
+    const setIds = () => {
+        dispatch(characterAction.setCharactersId(characterIds))
     }
 
     return (

@@ -7,7 +7,7 @@ import css from './Character.module.css'
 
 const Characters = () => {
     const navigate = useNavigate();
-    const {characters} = useSelector(state => state.episodes);
+    const {characters} = useSelector(state => state.character);
 
     const back = () => {
         navigate('/episode')

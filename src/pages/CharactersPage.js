@@ -2,16 +2,16 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import {Characters} from "../components";
-import {episodeAction} from "../redux";
+import {characterAction} from "../redux";
 
 const CharactersPage = () => {
 
     const dispatch = useDispatch();
-    const {idOfCharacters, isLoading, errors} = useSelector(state => state.episodes);
+    const {idOfCharacters, isLoading, errors} = useSelector(state => state.character);
 
 
     useEffect(() => {
-        dispatch(episodeAction.getByCharacterId(idOfCharacters))
+        dispatch(characterAction.getByCharacterId(idOfCharacters))
     }, [dispatch, idOfCharacters])
 
 
