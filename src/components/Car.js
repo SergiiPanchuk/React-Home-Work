@@ -6,7 +6,7 @@ import {carService} from "../services";
 const Car = ({car}) => {
     const {brand, price, year} = car;
     const dispatch = useDispatch();
-    const {trigger} = useSelector(state => state.trigger);
+    const {trigger} = useSelector(state => state.cars);
 
 
     const deleteById = async () => {

@@ -11,8 +11,7 @@ import {carsActions} from "../redux";
 const CarForm = () => {
 
     const dispatch = useDispatch();
-    const {trigger} = useSelector(state => state.trigger)
-    const {car} = useSelector(state => state.car)
+    const {trigger, car} = useSelector(state => state.cars)
 
 
     const {register, handleSubmit, reset, formState: {isValid, errors}, setValue} = useForm({
@@ -33,13 +32,20 @@ const CarForm = () => {
         dispatch(carsActions.setTrigger({trigger: !trigger}))
         reset();
     }
+    const update = async (car) => {
+        await carService.updateById(car.id, car)
+        dispatch(carsActions.setTrigger())
+        dispatch(carsActions.setUpdate(null))
+        reset()
+    }
+
     return (
         <>
-            <form onSubmit={handleSubmit(save)}>
+            <form onSubmit={handleSubmit(car ? update : save)}>
                 <input type="text" placeholder={'brand'} {...register("brand")}/>
                 <input type="text" placeholder={'price'} {...register("price", {valueAsNumber: true})}/>
                 <input type="text" placeholder={'year'} {...register("year", {valueAsNumber: true})}/>
-                <button disabled={!isValid}>save</button>
+                <button disabled={!isValid}>{car ? 'update' : 'save'}</button>
 
             </form>
             {errors.brand && <div>{errors.brand.message}</div>}

@@ -8,8 +8,7 @@ import {carsActions} from "../redux";
 
 const CarPage = () => {
     const dispatch = useDispatch();
-    const {cars} = useSelector(state => state.cars);
-    const {trigger} = useSelector(state => state.trigger)
+    const {cars, trigger} = useSelector(state => state.cars);
 
 
 
